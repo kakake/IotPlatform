@@ -21,9 +21,9 @@ class gpiohandle(httphandle):
         httphandle.__init__(self,name,interval,hostname)
         self.gpio=GPIO()
     def execute(self):#重写
-        self.gpio.stop()#停止之前的命令
-        cmd= self.gethttpdata(self.name)
-        if cmd<>None:
+		self.gpio.stop()#停止之前的命令
+		cmd= self.gethttpdata(self.name)
+       if cmd<>None:
 		    cmdname=cmd['cmdname']
 		
 		    if cmdname=='setgpio':

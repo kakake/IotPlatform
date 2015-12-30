@@ -16,10 +16,10 @@ def main():
 
         if len(sys.argv)  == 2:
 	        #print len(sys.argv)
-	        heartbeat=heartbeathandle('heartbeat',2,sys.argv[1])
+	        heartbeat=heartbeathandle('heartbeat',2,argv[1])
 	        threads['heartbeat']=heartbeat
 	
-	        gpio=gpiohandle('gpio',0.1,sys.argv[1])
+	        gpio=gpiohandle('gpio',0.1,argv[1])
 	        threads['gpio']=gpio
         else:
 	        heartbeat=heartbeathandle('heartbeat')

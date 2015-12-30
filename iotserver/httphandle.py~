@@ -75,7 +75,7 @@ class httphandle(threading.Thread):
 			else:
 				return
 		except Exception,ex:
-			print "connect "+httphandle.baseurl_post+" fail!!!",":",ex
+			print "connect http fail!!!",":",ex
 		finally:
 			return
 			
