@@ -12,6 +12,6 @@ class heartbeathandle(httphandle):
 		httphandle.__init__(self,name,interval,hostname)
 	
 	def execute(self):#重写
-		data={"cmdname":"connect"}
+		data={'cmdname':'heartbeat'}
 		val= self.posthttpdata('heartbeat',data)
 		

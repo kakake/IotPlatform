@@ -121,10 +121,10 @@ class GPIO(threading.Thread):
     def checkGPIO(self, gpio):
         i = int(gpio)
         if not self.isAvailable(i):
-            print "GPIO " + str(gpio) + " Not Available"
+            print "GPIO " + gpio + " Not Available"
             return False
         if not self.isEnabled(i):
-            print "GPIO " + str(gpio) + " Disabled"
+            print "GPIO " + gpio + " Disabled"
             return False
         return True
 		

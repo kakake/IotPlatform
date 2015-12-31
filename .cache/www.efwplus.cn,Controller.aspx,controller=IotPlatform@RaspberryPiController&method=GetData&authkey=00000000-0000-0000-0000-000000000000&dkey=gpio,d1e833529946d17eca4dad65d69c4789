@@ -1,0 +1,14 @@
+status: 200
+content-length: 99
+content-location: http://www.efwplus.cn/Controller.aspx?controller=IotPlatform@RaspberryPiController&method=GetData&authkey=00000000-0000-0000-0000-000000000000&dkey=gpio
+x-aspnet-version: 4.0.30319
+vary: Accept-Encoding
+server: Microsoft-IIS/7.5
+-content-encoding: gzip
+cache-control: private
+date: Thu, 31 Dec 2015 13:09:06 GMT
+x-powered-by: ASP.NET
+content-type: text/html; charset=UTF-8
+-varied-accept-encoding: gzip, deflate
+
+{"ret":0,"msg":"get data success.","data":{"cmdname":"getgpio","pins22":[0,1,2,3,4,5,6,7,8,14,15]}}

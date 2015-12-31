@@ -1,0 +1,14 @@
+status: 200
+content-length: 46
+content-location: http://www.efwplus.cn/Controller.aspx?controller=IotPlatform@RaspberryPiController&method=SendData&authkey=00000000-0000-0000-0000-000000000000&dkey=gpio&data=%7B%22UART%22%3A+true%2C+%22SPI%22%3A+false%2C+%22I2C%22%3A+false%2C+%22GPIO%22%3A+%7B%2211%22%3A+%7B%22direction%22%3A+%22in%22%2C+%22mode%22%3A+%22ENABLED%22%2C+%22value%22%3A+0%7D%2C+%2210%22%3A+%7B%22direction%22%3A+%22in%22%2C+%22mode%22%3A+%22ENABLED%22%2C+%22value%22%3A+0%7D%2C+%2221%22%3A+%7B%22direction%22%3A+%22in%22%2C+%22mode%22%3A+%22ENABLED%22%2C+%22value%22%3A+0%7D%2C+%2217%22%3A+%7B%22direction%22%3A+%22in%22%2C+%22mode%22%3A+%22ENABLED%22%2C+%22value%22%3A+0%7D%2C+%2223%22%3A+%7B%22direction%22%3A+%22in%22%2C+%22mode%22%3A+%22ENABLED%22%2C+%22value%22%3A+0%7D%2C+%2218%22%3A+%7B%22direction%22%3A+%22in%22%2C+%22mode%22%3A+%22ENABLED%22%2C+%22value%22%3A+0%7D%2C+%2222%22%3A+%7B%22direction%22%3A+%22in%22%2C+%22mode%22%3A+%22ENABLED%22%2C+%22value%22%3A+0%7D%2C+%221%22%3A+%7B%22direction%22%3A+%22out%22%2C+%22mode%22%3A+%22ENABLED%22%2C+%22value%22%3A+1%7D%2C+%220%22%3A+%7B%22direction%22%3A+%22in%22%2C+%22mode%22%3A+%22ENABLED%22%2C+%22value%22%3A+0%7D%2C+%224%22%3A+%7B%22direction%22%3A+%22out%22%2C+%22mode%22%3A+%22ENABLED%22%2C+%22value%22%3A+0%7D%2C+%227%22%3A+%7B%22direction%22%3A+%22in%22%2C+%22mode%22%3A+%22ENABLED%22%2C+%22value%22%3A+0%7D%2C+%2224%22%3A+%7B%22direction%22%3A+%22in%22%2C+%22mode%22%3A+%22ENABLED%22%2C+%22value%22%3A+0%7D%2C+%229%22%3A+%7B%22direction%22%3A+%22in%22%2C+%22mode%22%3A+%22ENABLED%22%2C+%22value%22%3A+0%7D%2C+%228%22%3A+%7B%22direction%22%3A+%22in%22%2C+%22mode%22%3A+%22ENABLED%22%2C+%22value%22%3A+0%7D%2C+%2225%22%3A+%7B%22direction%22%3A+%22in%22%2C+%22mode%22%3A+%22ENABLED%22%2C+%22value%22%3A+0%7D%7D%7D
+x-aspnet-version: 4.0.30319
+vary: Accept-Encoding
+server: Microsoft-IIS/7.5
+-content-encoding: gzip
+cache-control: private
+date: Thu, 31 Dec 2015 12:24:18 GMT
+x-powered-by: ASP.NET
+content-type: text/html; charset=UTF-8
+-varied-accept-encoding: gzip, deflate
+
+{"ret":0,"msg":"send data success.","data":{}}

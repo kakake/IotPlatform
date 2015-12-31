@@ -19,13 +19,14 @@ from httphandle import httphandle
 class gpiohandle(httphandle):
     def __init__(self,name='gpio',interval=0.1,hostname=""):
         httphandle.__init__(self,name,interval,hostname)
-        self.gpio=GPIO()
+        self.gpio=GPIO(self)
     def execute(self):#重写
         self.gpio.stop()#停止之前的命令
         cmd= self.gethttpdata(self.name)
+        #print cmd
         if cmd<>None:
 		    cmdname=cmd['cmdname']
-		
+		    #print cmdname		
 		    if cmdname=='setgpio':
 			    self.setgpio(cmd)
 		    elif cmdname=='replygpio':
@@ -57,15 +58,18 @@ class gpiohandle(httphandle):
     def setgpio(self,cmd):
 		setup=cmd['setup']
 		loop=cmd['loop']
-		self.gpio.setdata(setup,loop)
-		self.gpio.setDaemon(True)#守护线程
-		self.gpio.start()#开始执行命令
+		self.gpio.setdata(setup,loop,[])
+		if not self.gpio.isAlive():		
+		    self.gpio.setDaemon(True)#守护线程
+		    self.gpio.start()
+
 		
     def replygpio(self,cmd):
 		setup=cmd['setup']
 		loop=cmd['loop']
 		reply=cmd['reply']
-		self.gpio.setdata(setup,loop,reply,self.posthttpdata)
-		self.gpio.setDaemon(True)#守护线程
-		self.gpio.start()#开始执行命令
+		self.gpio.setdata(setup,loop,reply)
+		if not self.gpio.isAlive():		
+		    self.gpio.setDaemon(True)#守护线程
+		    self.gpio.start()
 

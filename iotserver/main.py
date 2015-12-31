@@ -19,13 +19,13 @@ def main():
 	        heartbeat=heartbeathandle('heartbeat',2,sys.argv[1])
 	        threads['heartbeat']=heartbeat
 	
-	        gpio=gpiohandle('gpio',0.1,sys.argv[1])
+	        gpio=gpiohandle('gpio',1,sys.argv[1])
 	        threads['gpio']=gpio
         else:
-	        heartbeat=heartbeathandle('heartbeat')
+	        heartbeat=heartbeathandle('heartbeat',2)
 	        threads['heartbeat']=heartbeat
 	
-	        gpio=gpiohandle('gpio')
+	        gpio=gpiohandle('gpio',1)
 	        threads['gpio']=gpio
 
           #启动线程

@@ -1,0 +1,14 @@
+status: 200
+content-length: 46
+content-location: http://www.efwplus.cn/Controller.aspx?controller=IotPlatform@RaspberryPiController&method=SendData&authkey=00000000-0000-0000-0000-000000000000&dkey=gpio&data=%7B%221%22%3A+%7B%22direction%22%3A+%22out%22%2C+%22mode%22%3A+%22ENABLED%22%2C+%22value%22%3A+1%7D%7D
+x-aspnet-version: 4.0.30319
+vary: Accept-Encoding
+server: Microsoft-IIS/7.5
+-content-encoding: gzip
+cache-control: private
+date: Thu, 31 Dec 2015 12:45:10 GMT
+x-powered-by: ASP.NET
+content-type: text/html; charset=UTF-8
+-varied-accept-encoding: gzip, deflate
+
+{"ret":0,"msg":"send data success.","data":{}}
