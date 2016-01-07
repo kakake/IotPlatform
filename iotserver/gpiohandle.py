@@ -24,7 +24,7 @@ class gpiohandle(httphandle):
         self.gpio.stop()#停止之前的命令
         cmd= self.gethttpdata(self.name)
         #print cmd
-        if cmd<>None:
+        if cmd<>None and cmd.has_key('cmdname'):
 		    cmdname=cmd['cmdname']
 		    #print cmdname		
 		    if cmdname=='setgpio':
@@ -52,24 +52,27 @@ class gpiohandle(httphandle):
 		
 		
     def getgpio(self,cmd):
-		pins=cmd["pins"]
-		self.gpio.reply(pins)
+		if cmd.has_key('pins'):
+		    pins=cmd["pins"]
+		    self.gpio.reply(pins)
 		
     def setgpio(self,cmd):
-		setup=cmd['setup']
-		loop=cmd['loop']
-		self.gpio.setdata(setup,loop,[])
-		if not self.gpio.isAlive():		
-		    self.gpio.setDaemon(True)#守护线程
-		    self.gpio.start()
+		if cmd.has_key('setup') and cmd.has_key('loop'):
+		    setup=cmd['setup']
+		    loop=cmd['loop']
+		    self.gpio.setdata(setup,loop,[])
+		    if not self.gpio.isAlive():		
+		        self.gpio.setDaemon(True)#守护线程
+		        self.gpio.start()
 
 		
     def replygpio(self,cmd):
-		setup=cmd['setup']
-		loop=cmd['loop']
-		reply=cmd['reply']
-		self.gpio.setdata(setup,loop,reply)
-		if not self.gpio.isAlive():		
-		    self.gpio.setDaemon(True)#守护线程
-		    self.gpio.start()
+		if cmd.has_key('setup') and cmd.has_key('loop') and cmd.has_key('reply'):
+		    setup=cmd['setup']
+		    loop=cmd['loop']
+		    reply=cmd['reply']
+		    self.gpio.setdata(setup,loop,reply)
+		    if not self.gpio.isAlive():		
+		        self.gpio.setDaemon(True)#守护线程
+		        self.gpio.start()
 

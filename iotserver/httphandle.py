@@ -49,16 +49,16 @@ class httphandle(threading.Thread):
                 resp, content = h.request(httphandle.baseurl_get+"&dkey="+dkey) #发出同步请求，并获取内容  
                 #print unicode(content,'utf-8').encode('utf-8')                
                 #self.log(unicode(content.decode('utf-8','ignore'),'gbk').encode('gb18030'))
-                self.log('get:'+dkey,unicode(content,'utf-8').encode('utf-8'))
+                #self.log('get:'+dkey,unicode(content,'utf-8').encode('utf-8'))
                 #json=unicode(content,'utf-8')
                 obj=json.loads(content)#content='{"ret":0,"msg":"","data":{}}'
 
                 if (obj['ret']==0 and len(obj['data'])>0):
                     #print obj['data']['cmdname']
-                    #print obj['data'][1]
+                    self.log('get:'+dkey,unicode(content,'utf-8').encode('utf-8'))
                     return obj['data']
                 else:
-                    #self.log(obj['msg'])
+                    #self.log('get:'+dkey,unicode(content,'utf-8').encode('utf-8'))
                     return		
 	        return
         except Exception,ex:
@@ -67,17 +67,19 @@ class httphandle(threading.Thread):
     def posthttpdata(self,dkey='',data={}):#提交数据
 		try:
 			if len(dkey)>0 and len(data)>0:
+				#print data
 				postdata={"data":json.dumps(data)}
 				h = httplib2.Http('.cache')  #获取HTTP对象 
 				#resp, content = h.request(httphandle.baseurl_post+"&dkey="+dkey, "POST", urlencode(postdata),headers={'Content-Type':'applicationx-www-form-urlencoded'})
+				#print httphandle.baseurl_post+"&dkey="+dkey+"&"+urlencode(postdata)
 				resp, content = h.request(httphandle.baseurl_post+"&dkey="+dkey+"&"+urlencode(postdata))
-				self.log('post:'+dkey,content)
+				#print content
 				obj=json.loads(content)#content='{"ret":0,"msg":"","data":[]}'
 				if (obj['ret']==0 and len(obj['data'])>0):
-					#self.log(obj['msg']+'#'+obj['data'])
+					self.log('post:'+dkey,content)
 					return obj['data']
 				else:
-					#self.log(obj['msg'])
+					#self.log('post:'+dkey,content)
 					return	
 			else:
 				return

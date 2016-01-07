@@ -21,7 +21,7 @@ class GPIO(threading.Thread):
     HIGH = RPi.GPIO.HIGH
 
     GPIO_PINS = []
-    GPIO_AVAILABLE = [0, 1, 4, 7, 8, 9, 10, 11, 14, 15, 17, 18, 21, 22, 23, 24, 25]
+    GPIO_AVAILABLE = [0, 1, 4,5,6, 7, 8, 9, 10, 11,12,13, 14, 15,16, 17, 18,19,20, 21, 22, 23, 24, 25,26,27]
     ALT = {
         "I2C": {"enabled": False, "pins": [0, 1]},
         "SPI": {"enabled": False, "pins": [7, 8, 9, 10, 11]},
@@ -41,6 +41,8 @@ class GPIO(threading.Thread):
         for i in range(self.GPIO_AVAILABLE[len(self.GPIO_AVAILABLE)-1]+1):
             self.GPIO_PINS.append({"mode": 0, "direction": None, "value": None})
 
+        self.setALT("I2C", False)
+        self.setALT("SPI", False)
         self.setALT("UART", True)
 
         for pin in self.GPIO_AVAILABLE:
@@ -82,7 +84,7 @@ class GPIO(threading.Thread):
     def setALT(self, alt, enable):
         for pin in self.ALT[alt]["pins"]:
             p = self.GPIO_PINS[pin];
-            if enable:
+            if True:
                 p["mode"] = GPIO.ALT
             else:
                 p["mode"] = GPIO.ENABLED
@@ -119,14 +121,18 @@ class GPIO(threading.Thread):
         return jsondata
 		
     def checkGPIO(self, gpio):
-        i = int(gpio)
-        if not self.isAvailable(i):
-            print "GPIO " + str(gpio) + " Not Available"
+        try:
+            i = int(gpio)
+            if not self.isAvailable(i):
+                print "GPIO " + str(gpio) + " Not Available"
+                return False
+            if not self.isEnabled(i):
+                print "GPIO " + str(gpio) + " Disabled"
+                return False
+            return True
+        except ValueError:
+            print 'no int'
             return False
-        if not self.isEnabled(i):
-            print "GPIO " + str(gpio) + " Disabled"
-            return False
-        return True
 		
     def run(self): #Overwrite run() method
         #self.thread_stop = False
@@ -142,33 +148,43 @@ class GPIO(threading.Thread):
             for (pin, value) in sdata.items():
                 if not self.checkGPIO(pin):
                     continue
-                i = int(pin)
-                if value == "in":
-                    self.setDirection(i, GPIO.IN)
-                elif value == "out":
-                    self.setDirection(i, GPIO.OUT)
-                else:
-                    print "Bad Direction"
+                try:
+                    i = int(pin)
+                    if value == "in":
+                        self.setDirection(i, GPIO.IN)
+                    elif value == "out":
+                        self.setDirection(i, GPIO.OUT)
+                    else:
+                        print "Bad Direction"
+                except ValueError:
+                    print 'no int'
 
     def loop(self,ldata):#循环解析并执行命令
 		if len(ldata)>0:
 			for cmd_loop in ldata:
 				cmd_name=cmd_loop.items()[0][0]
 				val=cmd_loop.items()[0][1]
-				if cmd_name=='pinval':
+				if cmd_name=='pinval' and len(val)==2:
 					if not self.checkGPIO(val[0]):
 						continue
-					pin=int(val[0])
-					value=int(val[1])
-					if (value == 0):
-						self.setValue(pin, False)
-					elif (value == 1):
-						self.setValue(pin , True)
-					else:
-						print "Bad Value"
-						
+					try:
+					    pin=int(val[0])
+					    value=int(val[1])
+					    if (value == 0):
+						    self.setValue(pin, False)
+					    elif (value == 1):
+						    self.setValue(pin , True)
+					    else:
+						    print "Bad Value"
+					except ValueError:
+					    print 'no int'
+	
 				elif cmd_name=='sleep':
-					time.sleep(float(val))
+					try:
+					    invt=float(val)
+					    time.sleep(invt)
+					except ValueError:
+					    print 'no float'
 			self.reply(self.replydata)
 				
     def reply(self,rdata):#应答post提交回web
