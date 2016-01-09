@@ -11,7 +11,7 @@ config = {
     'download_url': 'www.efwplus.cn',
     'author_email': '343588387@qq.com',
     'version': '0.1',
-    'install_requires': ['nose'],
+    'install_requires': ['nose','libhttp2'],
     'packages': ['iotserver'],
     'scripts': [],
     'name': 'iotserver'
