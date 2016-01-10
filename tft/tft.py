@@ -174,6 +174,133 @@ class tft(object):
 		
 	def delayms(self,count):
 		time.sleep(0.001*count)
+	
+	def TFT_InitILI9328(self):
+		#RPi.GPIO.output(tft.CMD['RES'],tft.HIGH)
+		self.delayms(1)
+		RPi.GPIO.output(tft.CMD['RES'],tft.LOW)
+		self.delayms(10)
+		RPi.GPIO.output(tft.CMD['RES'],tft.HIGH)
+		self.delayms(50)
+		
+		#self.WriteCom(0x00,0xE3)
+		#self.WriteData(0X30,0X08)
+		#self.WriteCom(0x00,0xE7)
+		#self.WriteData(0X00,0X12)
+		#self.WriteCom(0x00,0xEF)
+		#self.WriteData(0X12,0X31)
+		#self.WriteCom(0x00,0xE5)
+		#self.WriteData(0X78,0XF0)
+		
+		self.WriteCom(0x00,0x01)
+		self.WriteData(0X01,0X00)
+		self.WriteCom(0x00,0x02)
+		self.WriteData(0X07,0X00)
+		self.WriteCom(0x00,0x03)
+		self.WriteData(0X10,0X30)
+		self.WriteCom(0x00,0x04)
+		self.WriteData(0X00,0X00)
+		
+		self.WriteCom(0x00,0x08)
+		self.WriteData(0X02,0X07)
+		self.WriteCom(0x00,0x09)
+		self.WriteData(0X00,0X00)
+		self.WriteCom(0x00,0x0A)
+		self.WriteData(0X00,0X00)
+		self.WriteCom(0x00,0x0C)
+		self.WriteData(0X00,0X00)
+		self.WriteCom(0x00,0x0D)
+		self.WriteData(0X00,0X00)
+		self.WriteCom(0x00,0x0F)
+		self.WriteData(0X00,0X00)
+		
+		self.WriteCom(0x00,0x10)
+		self.WriteData(0X00,0X00)
+		self.WriteCom(0x00,0x11)
+		self.WriteData(0X00,0X07)
+		self.WriteCom(0x00,0x12)
+		self.WriteData(0X00,0X00)
+		self.WriteCom(0x00,0x13)
+		self.WriteData(0X00,0X00)
+		self.WriteCom(0x00,0x10)
+		self.WriteData(0X12,0X90)
+		self.WriteCom(0x00,0x11)
+		self.WriteData(0X02,0X27)
+		self.WriteCom(0x00,0x12)
+		self.WriteData(0X00,0X1D)
+		self.WriteCom(0x00,0x13)
+		self.WriteData(0X15,0X00)
+		
+		self.WriteCom(0x00,0x29)
+		self.WriteData(0X00,0X18)
+		self.WriteCom(0x00,0x2B)
+		self.WriteData(0X00,0X0D)
+
+		self.WriteCom(0x00,0x30)
+		self.WriteData(0X00,0X04)
+		self.WriteCom(0x00,0x31)
+		self.WriteData(0X03,0X07)
+		self.WriteCom(0x00,0x32)
+		self.WriteData(0X00,0X02)
+		self.WriteCom(0x00,0x35)
+		self.WriteData(0X02,0X06)
+		self.WriteCom(0x00,0x36)
+		self.WriteData(0X04,0X08)
+		self.WriteCom(0x00,0x37)
+		self.WriteData(0X05,0X07)
+		self.WriteCom(0x00,0x38)
+		self.WriteData(0X02,0X00)
+		self.WriteCom(0x00,0x39)
+		self.WriteData(0X07,0X07)
+		self.WriteCom(0x00,0x3C)
+		self.WriteData(0X04,0X05)
+		self.WriteCom(0x00,0x3D)
+		self.WriteData(0X0F,0X02)
+
+		self.WriteCom(0x00,0x50)
+		self.WriteData(0X00,0X00)
+		self.WriteCom(0x00,0x51)
+		self.WriteData(0X00,0XEF)
+		self.WriteCom(0x00,0x52)
+		self.WriteData(0X00,0X00)
+		self.WriteCom(0x00,0x53)
+		self.WriteData(0X01,0X3F)
+
+		self.WriteCom(0x00,0x60)
+		self.WriteData(0X27,0X00)
+		self.WriteCom(0x00,0x61)
+		self.WriteData(0X00,0X01)
+		self.WriteCom(0x00,0x6A)
+		self.WriteData(0X00,0X00)
+		
+		self.WriteCom(0x00,0x80)
+		self.WriteData(0X00,0X00)
+		self.WriteCom(0x00,0x81)
+		self.WriteData(0X00,0X00)
+		self.WriteCom(0x00,0x82)
+		self.WriteData(0X00,0X00)
+		self.WriteCom(0x00,0x83)
+		self.WriteData(0X00,0X00)
+		self.WriteCom(0x00,0x84)
+		self.WriteData(0X00,0X00)
+		self.WriteCom(0x00,0x85)
+		self.WriteData(0X00,0X00)
+		
+		self.WriteCom(0x00,0x90)
+		self.WriteData(0X00,0X10)
+		self.WriteCom(0x00,0x92)
+		self.WriteData(0X00,0X00)
+		self.WriteCom(0x00,0x93)
+		self.WriteData(0X00,0X03)
+		self.WriteCom(0x00,0x95)
+		self.WriteData(0X01,0X10)
+		self.WriteCom(0x00,0x97)
+		self.WriteData(0X00,0X00)
+		self.WriteCom(0x00,0x98)
+		self.WriteData(0X00,0X00)
+		self.WriteCom(0x00,0x07)
+		self.WriteData(0X01,0X33)
+		
 		
 	def TFT_Initial(self):
 		RPi.GPIO.output(tft.CMD['RES'],tft.HIGH)
@@ -182,6 +309,8 @@ class tft(object):
 		self.delayms(10)
 		RPi.GPIO.output(tft.CMD['RES'],tft.HIGH)
 		self.delayms(50)
+		
+		RPi.GPIO.output(tft.CMD['CS'],tft.LOW)
 		self.WriteCom(0x06,0x06)
 		self.WriteData(0X00,0X00)
 		self.delayms(100)
@@ -360,22 +489,25 @@ class tft(object):
 		self.WriteData(0X01,0X73)
 		self.delayms(500)
 		self.WriteCom(0x02,0x02)
+		RPi.GPIO.output(tft.CMD['CS'],tft.HIGH)
 		
 	def LCD_SetPos(self,x0,x1,y0,y1):
-		self.WriteCom(0x02,0x10)
+		self.WriteCom(0x00,0x50)
 		self.WriteData(x0>>8,x0)
-		self.WriteCom(0x02,0x11)
+		self.WriteCom(0x00,0x51)
 		self.WriteData(x1>>8,x1)
-		self.WriteCom(0x02,0x12)
+		self.WriteCom(0x00,0x52)
 		self.WriteData(y0>>8,y0)
-		self.WriteCom(0x02,0x13)
+		self.WriteCom(0x00,0x53)
 		self.WriteData(y1>>8,y1)
+		self.WriteCom(0x00,0x20)
+		self.WriteData(x0>>8,x0)
+		self.WriteCom(0x00,0x21)
+		self.WriteData(y0>>8,y0)
+		
+		
 
-		self.WriteCom(0x02,0x00)
-		self.WriteData(0X00,0X00)
-		self.WriteCom(0x02,0x01)
-		self.WriteData(0X00,0X00)
-		self.WriteCom(0x02,0x02)
+		self.WriteCom(0x00,0x22)
 		
        
 	def writeJSON(self):
@@ -394,7 +526,8 @@ if __name__ == '__main__':
 	print 'started...'
 	font=tft()
 	print font.writeJSON()
-	font.TFT_Initial()
+	#font.TFT_Initial()
+	font.TFT_InitILI9328()
 	while True:
 		print 'inited...'
 		font.ClearScreen(0x0000)
@@ -404,8 +537,21 @@ if __name__ == '__main__':
 		font.show_colour_bar()	#显示彩条
 		font.ClearScreen(0x00ff)
 		print 'show_colour_bar...'
-		font.LCD_PutString(40,40,"hellokakake520",0x0000,0xffff)
+		font.LCD_PutString(40,40,"hello,kakake520",0x00ff,0xffff)
 		print 'finshed...'
+		while True:
+			print '...'
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 
 
 
