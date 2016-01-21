@@ -3,7 +3,7 @@
 
 ![](https://raw.githubusercontent.com/kakake/IotPlatform/master/docs/IotPlatform.png) 
 ![](https://raw.githubusercontent.com/kakake/IotPlatform/master/docs/demo.png) 
-![](https://raw.githubusercontent.com/kakake/IotPlatform/master/docs/app1.png) 
+
 ![](https://raw.githubusercontent.com/kakake/IotPlatform/master/docs/app2.png) 
 
 
