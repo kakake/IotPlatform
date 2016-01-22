@@ -1,0 +1,41 @@
+#######################################
+# Syntax Coloring Map ESP8266
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+Esp8266	KEYWORD1
+
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+begin				KEYWORD2
+connectAP			KEYWORD2
+checkEsp8266		KEYWORD2
+resetEsp8266		KEYWORD2
+debugPrintln		KEYWORD2
+setSingleConnect	KEYWORD2
+setMultiConnect		KEYWORD2
+connectTCPServer	KEYWORD2
+checkMessage		KEYWORD2
+getMessage			KEYWORD2
+setState			KEYWORD2
+getState			KEYWORD2
+sendMessage			KEYWORD2
+endMessage			KEYWORD2
+getWorkingID		KEYWORD2
+getFailConnectID	KEYWORD2
+openTCPServer		KEYWORD2
+enableAP			KEYWORD2
+getIP				KEYWORD2
+setPureDataMode		KEYWORD2
+#######################################
+# Constants (LITERAL1)
+#######################################
+
+
+
+
